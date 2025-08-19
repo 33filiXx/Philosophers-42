@@ -1,0 +1,11 @@
+
+#include "../nrc/philo.h";
+
+
+
+
+
+
+
+
+
