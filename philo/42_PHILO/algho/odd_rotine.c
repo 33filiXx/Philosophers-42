@@ -29,7 +29,7 @@ void	exact_take_fork(t_philo *philo)
 	take_fork(philo);
 }
 
-void	*rotine(void *arg)
+void	*if_odd_rotine(void *arg)
 {
 	t_philo *philo;
 

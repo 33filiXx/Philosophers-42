@@ -6,7 +6,7 @@
 /*   By: wel-mjiy <wel-mjiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 04:08:15 by wel-mjiy          #+#    #+#             */
-/*   Updated: 2025/08/21 06:57:30 by wel-mjiy         ###   ########.fr       */
+/*   Updated: 2025/08/21 17:02:20 by wel-mjiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,15 @@ void	eating(t_philo *philo)
     puts_fork(philo);
 }
 
-void	*rotine(void *arg)
+void	*if_even_rotine(void *arg)
 {
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	while (1)
+	while (!(check_death(philo)))
 	{
+		if (philo_should_exit(philo))
+			return;
 		take_fork(philo);
 		eating(philo);
 		sleeping_then_think(philo);

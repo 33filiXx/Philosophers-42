@@ -1,12 +1,33 @@
 
 #include "../nrc/philo.h";
 
+void	destroy_mutexes(t_data *data)
+{
+	int	i;
 
+	i = 0;
+	while (i < data->number_of_philosophe)
+	{
+		pthread_mutex_destroy(&data->fork[i]);
+		i++;
+	}
+	pthread_mutex_destroy(&data->print);
+	pthread_mutex_destroy(&data->death);
+	pthread_mutex_destroy(&data->meals);
+	pthread_mutex_destroy(&data->turn);
+}
 
-
+void	cleanup(t_data *data)
+{
+	if (data->fork)
+		destroy_mutexes(data);
+	if (data->fork)
+		free(data->fork);
+	if (data->philo)
+		free(data->philo);
+}
 int create_mutex(t_data *data)
 {
-
 	int i;
 
 	i = 0;
@@ -28,27 +49,45 @@ int create_mutex(t_data *data)
 	return 0;
 }
 
-
-void *rotine(void *args)
-{
-	t_data *data = (t_data *)args;
-	
-
-}
-
-
-int  diner(t_data *data)
+int  dinner(t_data *data)
 {
 	int i;
 
 	i = 0;
-	create_mutex(data);
+	if(create_mutex(data))
+		return 1;
+	data->start_time = get_time();
 	while (i < data->number_of_philosophe)
 	{
-
+		data->philo[i].last_meal = data->start_time;
+		if (pthread_create(&data->philo->thread , NULL , &if_even_rotine , &data->philo[i]) != 0)
+			return (printf("%s\n", "creation failed"), 1);
+		i++;
 	}
-	
+	if (pthread_create(&data->moniteur , NULL , &monitor_routine , data) != 0)
+			return (printf("%s\n", "creation failed"), 1);
+	return 0;
 }
+
+
+void leonardo_da_vinci_dinner(t_data *data)
+{
+	int i;
+
+	i = 0;
+	pthread_join(data->moniteur , NULL);
+	while (i < data->number_of_philosophe)
+	{
+		pthread_join(data->philo[i].thread , NULL);
+		i++;
+	}
+	cleanup(data);
+}
+
+
+
+
+
 
 
 

@@ -33,6 +33,7 @@ typedef struct s_data
 	int					must_eat;
 	int					current_turn;
 	long long			start_time;
+	int					all_ate;
 	t_philo				*philo;
 }						t_data;
 
@@ -54,4 +55,11 @@ void					custom_sleep(int time_ms, t_philo *philo);
 void					take_fork(t_philo *philo);
 void					puts_fork(t_philo *philo);
 void					sleeping_then_think(t_philo *philo);
+int						check_death(t_philo *philo);
+void					*if_even_rotine(void *arg);
+void					*if_odd_rotine(void *arg);
+void					*monitor_routine(void *arg);
+void					cleanup(t_data *data);
+int  					dinner(t_data *data);
+void 					leonardo_da_vinci_dinner(t_data *data);
 #endif

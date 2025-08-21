@@ -114,17 +114,10 @@ int store_data(char **av  , t_data *data)
 	data->is_died = 0;
 	data->philo = malloc(sizeof(t_philo) * data->number_of_philosophe);
 	if(!data->philo)
-	{
-		free(data);
-		return 1;
-	}
+		return (free(data) , 1);
 	data->fork = malloc(data->number_of_philosophe * sizeof(pthread_mutex_t));
 	if(!data->fork)
-	{
-		free(data->philo);
-		free(data);
-		return 1;
-	}
+		return (free(data->philo) ,free(data),1);
 	if (data->number_of_philosophe  % 2 == 0)
 		handle_even(data , 0);
 	else
