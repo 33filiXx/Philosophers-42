@@ -2,7 +2,7 @@ NAME = philo
 CC = cc
 CFLAGS = -Wall -Wextra -Werror #-fsanitize=address -g3
 
-SRCS = PHILO_42/src/main.c PHILO_42/pars/parsing.c
+SRCS = 42_PHILO/src/main.c 42_PHILO/pars/parsing.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
