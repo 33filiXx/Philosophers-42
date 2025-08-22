@@ -1,6 +1,4 @@
-#include "../nrc/philo.h";
-
-
+#include "42_PHILO/nrc/philo.h"
 
 long long	get_time(void)
 {

@@ -6,13 +6,11 @@
 /*   By: wel-mjiy <wel-mjiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:27:37 by wel-mjiy          #+#    #+#             */
-/*   Updated: 2025/08/21 16:33:44 by wel-mjiy         ###   ########.fr       */
+/*   Updated: 2025/08/21 19:18:01 by wel-mjiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include "../nrc/philo.h";
-
+#include "42_PHILO/nrc/philo.h"
 
 int	finde_death(t_data *data, int i)
 {
@@ -23,7 +21,7 @@ int	finde_death(t_data *data, int i)
 	current_time = get_time();
 	pthread_mutex_lock(&data->meals);
 	last_meal = data->philo[i].last_meal;
-	pthread(&data->meals);
+	pthread_mutex_unlock(&data->meals);
 	time_since_last_meal = current_time - last_meal;
 	if (time_since_last_meal >= data->time_to_die)
 	{
@@ -74,7 +72,7 @@ int	monitor_death_finder(t_data *data)
 
 void	*monitor_routine(void *arg)
 {
-	t_data	*data;
+	t_data *data;
 
 	data = (t_data *)arg;
 	while (1)

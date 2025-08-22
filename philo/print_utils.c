@@ -1,5 +1,5 @@
 
-#include "../nrc/philo.h";
+#include "42_PHILO/nrc/philo.h"
 
 static void	print_philo_state(t_philo *philo, int state)
 {

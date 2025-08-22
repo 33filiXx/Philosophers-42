@@ -62,4 +62,6 @@ void					*monitor_routine(void *arg);
 void					cleanup(t_data *data);
 int  					dinner(t_data *data);
 void 					leonardo_da_vinci_dinner(t_data *data);
+int						philo_should_exit(t_philo *philo);
+int 					create_mutex(t_data *data);
 #endif
