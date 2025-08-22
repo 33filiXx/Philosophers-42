@@ -6,7 +6,7 @@
 /*   By: wel-mjiy <wel-mjiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:27:37 by wel-mjiy          #+#    #+#             */
-/*   Updated: 2025/08/21 19:18:01 by wel-mjiy         ###   ########.fr       */
+/*   Updated: 2025/08/22 15:52:01 by wel-mjiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	monitor_death_finder(t_data *data)
 
 void	*monitor_routine(void *arg)
 {
-	t_data *data;
+	t_data	*data;
 
 	data = (t_data *)arg;
 	while (1)

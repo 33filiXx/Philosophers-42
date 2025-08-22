@@ -1,4 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   helper.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wel-mjiy <wel-mjiy@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/22 15:50:49 by wel-mjiy          #+#    #+#             */
+/*   Updated: 2025/08/22 15:51:00 by wel-mjiy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "42_PHILO/nrc/philo.h"
+
+void	destroy_mutexes(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->number_of_philosophe)
+	{
+		pthread_mutex_destroy(&data->fork[i]);
+		i++;
+	}
+	pthread_mutex_destroy(&data->print);
+	pthread_mutex_destroy(&data->death);
+	pthread_mutex_destroy(&data->meals);
+	pthread_mutex_destroy(&data->turn);
+}
 
 long long	get_time(void)
 {

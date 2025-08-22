@@ -1,21 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algho.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wel-mjiy <wel-mjiy@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/22 15:49:43 by wel-mjiy          #+#    #+#             */
+/*   Updated: 2025/08/22 15:49:59 by wel-mjiy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "42_PHILO/nrc/philo.h"
-
-void	destroy_mutexes(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (i < data->number_of_philosophe)
-	{
-		pthread_mutex_destroy(&data->fork[i]);
-		i++;
-	}
-	pthread_mutex_destroy(&data->print);
-	pthread_mutex_destroy(&data->death);
-	pthread_mutex_destroy(&data->meals);
-	pthread_mutex_destroy(&data->turn);
-}
 
 void	cleanup(t_data *data)
 {
@@ -26,6 +21,7 @@ void	cleanup(t_data *data)
 	if (data->philo)
 		free(data->philo);
 }
+
 int	create_mutex(t_data *data)
 {
 	int	i;

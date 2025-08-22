@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   odd_rotine.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wel-mjiy <wel-mjiy@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/22 15:52:13 by wel-mjiy          #+#    #+#             */
+/*   Updated: 2025/08/22 15:52:43 by wel-mjiy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "42_PHILO/nrc/philo.h"
 
 static void	handle_single_philo(t_philo *philo)
@@ -6,7 +18,6 @@ static void	handle_single_philo(t_philo *philo)
 	print_state(philo, TOOK_FORK);
 	pthread_mutex_unlock(&philo->data->fork[philo->left_fork]);
 }
-
 
 void	odd_eating(t_philo *philo)
 {
@@ -39,15 +50,15 @@ void	exact_take_fork(t_philo *philo)
 
 void	*if_odd_rotine(void *arg)
 {
-	t_philo *philo;
+	t_philo	*philo;
 
 	philo = (t_philo *)arg;
 	while (!(check_death(philo)))
 	{
-		if(philo->data->number_of_philosophe == 1)
+		if (philo->data->number_of_philosophe == 1)
 			handle_single_philo(philo);
 		if (philo_should_exit(philo))
-			break;
+			break ;
 		exact_take_fork(philo);
 		odd_eating(philo);
 		sleeping_then_think(philo);

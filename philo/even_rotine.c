@@ -6,7 +6,7 @@
 /*   By: wel-mjiy <wel-mjiy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 04:08:15 by wel-mjiy          #+#    #+#             */
-/*   Updated: 2025/08/22 01:57:38 by wel-mjiy         ###   ########.fr       */
+/*   Updated: 2025/08/22 15:50:30 by wel-mjiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	sleeping_then_think(t_philo *philo)
 	custom_sleep(philo->data->time_to_sleep, philo);
 	print_state(philo, THINKING);
 }
+
 void	puts_fork(t_philo *philo)
 {
 	if (philo->id % 2 == 0)
@@ -31,6 +32,7 @@ void	puts_fork(t_philo *philo)
 		pthread_mutex_unlock(&philo->data->fork[philo->left_fork]);
 	}
 }
+
 void	take_fork(t_philo *philo)
 {
 	if (philo->id % 2 == 0)
@@ -68,7 +70,7 @@ void	*if_even_rotine(void *arg)
 	while (!(check_death(philo)))
 	{
 		if (philo_should_exit(philo))
-			break;
+			break ;
 		take_fork(philo);
 		eating(philo);
 		sleeping_then_think(philo);

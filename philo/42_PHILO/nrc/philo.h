@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wel-mjiy <wel-mjiy@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/22 15:59:07 by wel-mjiy          #+#    #+#             */
+/*   Updated: 2025/08/22 15:59:09 by wel-mjiy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_H
 # define PHILO_H
 
@@ -60,8 +72,13 @@ void					*if_even_rotine(void *arg);
 void					*if_odd_rotine(void *arg);
 void					*monitor_routine(void *arg);
 void					cleanup(t_data *data);
-int  					dinner(t_data *data);
-void 					leonardo_da_vinci_dinner(t_data *data);
+int						dinner(t_data *data);
+void					leonardo_da_vinci_dinner(t_data *data);
 int						philo_should_exit(t_philo *philo);
-int 					create_mutex(t_data *data);
+int						create_mutex(t_data *data);
+size_t					ft_atoi(char *str);
+int						ft_is_char_degit(char a);
+int						number_checker(char **av);
+int						check_if_above_m(char **av);
+void					destroy_mutexes(t_data *data);
 #endif
